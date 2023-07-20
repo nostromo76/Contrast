@@ -1,0 +1,16 @@
+{
+  "name": "contrast",
+  "version": "1.0.0",
+  "description": "Template Full Web Site",
+  "main": "index.js",
+  "scripts": {
+    "test":  "cypress open"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^12.17.1",
+    "mocha": "^10.2.0",
+    "mochawesome": "^7.1.3"
+  }
+}
