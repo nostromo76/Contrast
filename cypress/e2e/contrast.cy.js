@@ -171,7 +171,7 @@ cy.get('.secondary_layer').toMatchImageSnapshot({ name: 'creative' }); // take a
     cy.get('.button .btn').should('be.visible');
 
   })
-  it.only('Test client slider', function () {
+  it('Test client slider', function () {
     cy.get('.clients-carousel').scrollIntoView()
     cy.get('.active > .row > :nth-child(1) > .thumbnail > img').should('have.attr', 'src', 'images/clients/client1.png')
     cy.get('.active > .row > :nth-child(2) > .thumbnail > img').should('have.attr', 'src', 'images/clients/client2.png')
@@ -185,7 +185,42 @@ cy.get('.secondary_layer').toMatchImageSnapshot({ name: 'creative' }); // take a
 
 
   })
-});
+  it('Test more information section', function () {
+    cy.get(':nth-child(1) > .sides').should('be.visible')
+    cy.get(':nth-child(2) > .sides').should('be.visible')
+    cy.get(':nth-child(1) > .sides > h4').should('be.visible').and('have.text', 'Why Choose Us')
+    cy.get(':nth-child(2) > .sides > h4').should('be.visible').and('have.text', 'What We Will Do')
+
+  })
+  it('Test Subscribe part', function () {
+    cy.get('.opacity_overlay > .container').scrollIntoView();
+    cy.get('.opacity_overlay > .container > h3').should('be.visible').and('have.text', 'Subscribe')
+    cy.get('.container > p').should('be.visible').and('have.text', 'Be the first to hear our latest news')
+
+    cy.get('.form-input').type('demo@demo.com')
+    cy.get('.btn-group > .btn').invoke('click')
+
+  })
+  it('Test footer', function () {
+    cy.get('.footer').scrollIntoView()
+    cy.get('.container > :nth-child(1) > h3').should('be.visible').and('have.text', 'Contrast')
+    cy.get('.container > :nth-child(2) > h3').should('be.visible').and('have.text', 'About Us')
+    cy.get('.container > :nth-child(3) > h3').should('be.visible').and('have.text', 'Contact Info')
+    cy.get('.contact-list > li > :nth-child(1)').should('be.visible').and('contain','WC2N 5DN')
+    cy.get('li > :nth-child(2)').should('be.visible').and('contain','0800 240 0905')
+    cy.get('li > :nth-child(3)').should('be.visible').and('contain','support@yourdomain.com')
+    cy.get('.copyright-part > p').should('be.visible').and('contain','2023 Contrast')
+  })
+  it('Test scroll button',function(){
+    cy.get('#scrollUp').scrollIntoView()
+    cy.get('#scrollUp').invoke('click')
+    cy.window().its('scrollY').should('equal', 0)
+
+
+  })
+
+})
+
 
 
 
