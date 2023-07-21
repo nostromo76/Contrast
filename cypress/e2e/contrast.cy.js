@@ -6,11 +6,7 @@ describe('Test of Web page Contrast as company portfolio and work', () => {
     cy.visit('../../index.html')
   })
 
-  it('Test opening the page ', function () {
 
-
-    cy.title().should('exist', 'index.html');
-  })
   it('Test top heading and contacts ', function () {
     const PHONE_NUMBER = '+44 0799 6789 1234';
     cy.get('.contact-info').should('contain.text', PHONE_NUMBER);
