@@ -59,11 +59,75 @@ describe('Test of service page', () => {
         cy.get('.active').should('contain', 'Company')
     })
 
-  it('Test Image reprentative',function(){
-    cy.get('.image > .img-responsive').should('be.visible')
-    cy.get('.image > .img-responsive').should('have.attr', 'src', 'images/about-us.jpg');
-  })
+    it('Test Image reprentative', function () {
+        cy.get('.image > .img-responsive').should('be.visible')
+        cy.get('.image > .img-responsive').should('have.attr', 'src', 'images/about-us.jpg');
+    })
+    it('Test heading', function () {
+        cy.get('.text > h3').should('be.visible').and('have.text', 'About Us')
+        cy.get('.text > :nth-child(2)').should('be.visible').and('contain', 'Lorem ipsum')
+        cy.get('.text > :nth-child(3)').should('be.visible').and('contain', 'Sit vide')
+
+    })
+    it('Test description on page ', function () {
+        cy.get('.description').scrollIntoView()
+        cy.get('.description').should('be.visible').and('have.text', 'OUR TEAM')
+
+    })
+    it('Test of display images corectly, and hoover effect on social', function () {
+        cy.get('.profile img').each(($el) => {
+            cy.wrap($el).should('have.attr', 'src').and('include', 'images/');
+
+        });
+
+        it('Displays icons on hover', function () {
 
 
+            cy.get('.img-box')
+            cy.get('.img-box').each(($el) => {
+                cy.wrap($el).trigger('mouseover');
+                cy.wrap($el).find('ul').should('be.visible');
+                cy.wrap($el).find('a:nth-child(1)').click();
+                cy.url().should('contain', 'facebook.com');
+                cy.wrap($el).find('a:nth-child(2)').click();
+                cy.url().should('contain', 'twitter.com');
+                cy.wrap($el).find('a:nth-child(3)').click();
+                cy.url().should('contain', 'linkedin.com.com');
 
+
+            });
+            it('Displays correct names', function () {
+                const names = ['John Doe', 'Chris Doe', 'Jack Doe', 'Nancy Doe', 'James John', 'Daniel John'];
+
+                cy.get('.profile h1').each(($el, index) => {
+                    cy.wrap($el).should('have.text', names[index]);
+                });
+            });
+        });
+
+    })
+    it('Displays correct names', function () {
+        const names = ['John Doe', 'Chris Doe', 'Jack Doe', 'Nancy Doe', 'James John', 'Daniel John'];
+
+        cy.get('.profile h1').each(($el, index) => {
+            cy.wrap($el).should('have.text', names[index]);
+        });
+    });
+    it('Test footer', function () {
+        cy.get('.footer').scrollIntoView()
+        cy.get('.container > :nth-child(1) > h3').should('be.visible').and('have.text', 'Contrast')
+        cy.get('.container > :nth-child(2) > h3').should('be.visible').and('have.text', 'About Us')
+        cy.get('.container > :nth-child(3) > h3').should('be.visible').and('have.text', 'Contact Info')
+        cy.get('.contact-list > li > :nth-child(1)').should('be.visible').and('contain','WC2N 5DN')
+        cy.get('li > :nth-child(2)').should('be.visible').and('contain','0800 240 0905')
+        cy.get('li > :nth-child(3)').should('be.visible').and('contain','support@yourdomain.com')
+        cy.get('.copyright-part > p').should('be.visible').and('contain','2023 Contrast')
+      })
+      it('Test scroll button',function(){
+        cy.get('#scrollUp').scrollIntoView()
+        cy.get('#scrollUp').invoke('click')
+        cy.window().its('scrollY').should('equal', 0)
+    
+    
+      })
 })
