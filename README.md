@@ -40,7 +40,7 @@ Contributions to this template are welcome! If you find a bug or would like to a
 
 ## Credits
 
-This template was created by [Your Name Here] and is licensed under the MIT license.
+This template was tested by nostromo76 and is licensed under the MIT license.
 
 ## License
 
