@@ -214,6 +214,24 @@ cy.get('.secondary_layer').toMatchImageSnapshot({ name: 'creative' }); // take a
 
 
   })
+  it('Test footer', function () {
+    cy.get('.footer').scrollIntoView()
+    cy.get('.container > :nth-child(1) > h3').should('be.visible').and('have.text', 'Contrast')
+    cy.get('.container > :nth-child(2) > h3').should('be.visible').and('have.text', 'About Us')
+    cy.get('.container > :nth-child(3) > h3').should('be.visible').and('have.text', 'Contact Info')
+    cy.get('.contact-list > li > :nth-child(1)').should('be.visible').and('contain','WC2N 5DN')
+    cy.get('li > :nth-child(2)').should('be.visible').and('contain','0800 240 0905')
+    cy.get('li > :nth-child(3)').should('be.visible').and('contain','support@yourdomain.com')
+    cy.get('.copyright-part > p').should('be.visible').and('contain','2023 Contrast')
+  })
+  it('Test scroll button',function(){
+    cy.get('#scrollUp').scrollIntoView()
+    cy.get('#scrollUp').invoke('click')
+    cy.window().its('scrollY').should('equal', 0)
+
+
+  })
+
 
 })
 
