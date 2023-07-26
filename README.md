@@ -20,13 +20,6 @@ To open Cypress, run the following command:
 npx cypress open
 ```
 
-### Installing Mocha and Mochawesome
-
-In addition to Cypress, you will also need to install Mocha and Mochawesome. To do so, run the following commands:
-```
-npm install mocha
-npm install --save-dev mochawesome
-```
 
 ## Usage
 
